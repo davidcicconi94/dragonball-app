@@ -1,9 +1,15 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { authTypes } from "../types/authTypes";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
 
+  const { dispatch } = useContext(AuthContext);
+
   const handleClick = () => {
+    dispatch({ type: authTypes.login });
     navigate("/men");
   };
 

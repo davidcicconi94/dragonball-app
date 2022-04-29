@@ -29,8 +29,8 @@ const SearchScreen = () => {
       const newValue = Characters.filter((character) =>
         character.name.toLocaleLowerCase().includes(value)
       );
+
       setCharacters(newValue);
-      console.log(characters);
     } else {
       setCharacters([]);
     }
@@ -43,45 +43,47 @@ const SearchScreen = () => {
 
   return (
     <div className="container mt-3">
-      <h2>Search a character</h2>
+      <h2>Search Characters</h2>
       <hr />
 
+      <div class="card text-white bg-dark mt-5 text-center ">
+        <div class="card-body m-4">
+          <h5 class="card-title">Find your character!</h5>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="form-control mt-4 w-50 m-auto"
+              placeholder="Write here..."
+              autoComplete="off"
+              onChange={handleChange}
+              value={input}
+            />
+            <button type="submit" className="btn btn-outline-light mt-4">
+              Search
+            </button>
+            <button
+              onClick={() => {
+                navigate("/men");
+              }}
+              className="btn btn-outline-warning mt-4 mx-2"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+      <h3 className="text-center mt-5">Results: {characters.length} </h3>
+
+      {characters.length === 0 && (
+        <div className="alert alert-warning text-center mt-4">
+          Character not found :(
+        </div>
+      )}
+
       <div className="row">
-        <div className="col-4">
-          <div class="card text-white bg-dark mt-5 text-center">
-            <div class="card-body">
-              <h5 class="card-title">Find your character!</h5>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  className="form-control mt-4 w-50 m-auto"
-                  placeholder="Write here..."
-                  autoComplete="off"
-                  onChange={handleChange}
-                  value={input}
-                />
-                <button type="submit" className="btn btn-info mt-4">
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div className="col-8">
-          <h3 className="text-center">Results: {characters.length} </h3>
-
-          {characters.length === 0 && (
-            <div className="alert alert-warning text-center mt-4">
-              Character not found :(
-            </div>
-          )}
-
-          <div className="row">
-            {characters.map((character) => (
-              <Card key={character.id} {...character} />
-            ))}
-          </div>
-        </div>
+        {characters.map((character) => (
+          <Card key={character.id} {...character} />
+        ))}
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ export const Characters = [
   {
     id: "goku",
     name: "Son Goku",
-    description: "Protagonista de DB",
+    description: "Main protagonist",
     type: "h",
     race: "Sayayin",
     age: "44",

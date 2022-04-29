@@ -4,14 +4,13 @@ import { Characters } from "../models/Characters";
 
 const CharacterScreen = () => {
   const { id } = useParams();
-  console.log(id);
 
   const characters = Characters.filter((ch) => ch.id === id);
 
   return (
     <div className="container mt-3">
       {characters.map((char) => (
-        <Character {...char} />
+        <Character key={char.id} {...char} />
       ))}
     </div>
   );

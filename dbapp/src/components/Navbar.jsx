@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { authTypes } from "../types/authTypes";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
 
   const handleLogout = () => {
+    dispatch({ type: authTypes.logout });
     navigate("/");
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <NavLink className="nav-link" to="/">
-          DB App
-        </NavLink>
         <button
           className="navbar-toggler"
           type="button"

@@ -15,17 +15,18 @@ const Card = ({ id, name, description, type }) => {
       data-placement="top"
       title="See more..."
     >
-      <div className="card-header text-center text-white bg-info ">
+      <div className="card-header text-center text-white bg-dark ">
         <strong>{name}</strong>
       </div>
       <img
+        loading="lazy"
         src={path}
         height="250px"
         alt={`${name}.jpg`}
         className="mt-2"
         onClick={handleCharacter}
       />
-      <div className="card-footer mt-4">
+      <div className="card-footer mt-4 text-center">
         <p>{description}</p>
       </div>
     </div>
